@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  /* Boje - preuzete iz logotipa (teget radno odelo, žuti šlem, narandžasta pozadina) */
+  --color-primary: #12314f;
+  --color-primary-dark: #0a1f33;
+  --color-primary-light: #1f4d78;
+  --color-accent: #f5a623;
+  --color-accent-dark: #d68a0f;
+  --color-ink: #101820;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-heading: var(--font-poppins), system-ui, sans-serif;
+}
+
+:root {
+  --color-primary: #12314f;
+  --color-accent: #f5a623;
+}
+
+/* Dodatni custom stilovi idu ovde */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-ink);
+}
+
