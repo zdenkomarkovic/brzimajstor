@@ -10,12 +10,11 @@ export function Hero() {
             🕐 Hitne intervencije 0-24, svakog dana
           </p>
           <h1 className="mt-4 font-heading text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">
-            Brzi majstor za Beograd — vodovod, elektrika, kanalizacija i grejanje
+            Haus Majstor Beograd — vodovod, elektrika, kanalizacija i grejanje
           </h1>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
-            Hitan kvar ne bira vreme. Naš tim izlazi na teren širom Beograda,
-            danju i noću, i rešava probleme sa vodom, strujom, začepljenjem i
-            grejanjem brzo i profesionalno.
+            Hitan kvar ne bira vreme. Naš tim izlazi na teren širom Beograda, danju i noću, i rešava
+            probleme sa vodom, strujom, začepljenjem i grejanjem brzo i profesionalno.
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">

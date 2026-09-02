@@ -38,7 +38,7 @@ export function buildMetadata({
 }: BuildMetadataOptions = {}): Metadata {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
   const canonicalUrl = url ?? SITE_URL;
-  const ogImage = image ?? `${SITE_URL}/og-image.png`; // Dodaj og-image.png u /public
+  const ogImage = image ?? `${SITE_URL}/og-image.jpg`;
 
   return {
     title: fullTitle,
@@ -56,8 +56,8 @@ export function buildMetadata({
       images: [
         {
           url: ogImage,
-          width: 1200,
-          height: 630,
+          width: 1000,
+          height: 667,
           alt: fullTitle,
         },
       ],

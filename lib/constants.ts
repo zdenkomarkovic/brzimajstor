@@ -1,8 +1,9 @@
 // Globalne konstante sajta
 // Ove vrednosti se koriste za SEO, metadata, i prikaz kontakt podataka
 
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hausmajstorbeograd.rs";
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://majstor-bg.rs"
+).replace(/\/$/, "");
 
 export const SITE_NAME =
   process.env.NEXT_PUBLIC_SITE_NAME ?? "HausMajstor Beograd";

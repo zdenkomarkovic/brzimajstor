@@ -4,8 +4,9 @@ import { z } from "zod";
 // Dodaj ovde sve env varijable koje projekat koristi
 
 const envSchema = z.object({
-  NEXT_PUBLIC_SITE_URL: z.string().url().default("https://www.hausmajstorbeograd.rs"),
+  NEXT_PUBLIC_SITE_URL: z.string().url().default("https://majstor-bg.rs"),
   NEXT_PUBLIC_SITE_NAME: z.string().default("HausMajstor Beograd"),
+  NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: z.string().optional(),
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
 
   // Mailjet - slanje mejlova sa kontakt forme

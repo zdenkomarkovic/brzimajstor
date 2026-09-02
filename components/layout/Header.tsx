@@ -16,15 +16,15 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-black/5 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2 sm:px-6">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4  sm:px-6">
         <Link href="/" className="flex items-center gap-2 shrink-0" onClick={() => setOpen(false)}>
           <Image
             src="/logo.png"
             alt={`${SITE_NAME} logo`}
-            width={56}
-            height={56}
+            width={200}
+            height={200}
             priority
-            className="h-12 w-12 sm:h-14 sm:w-14"
+            className="h-20 w-20"
           />
           <span className="font-heading text-base font-bold leading-tight text-primary sm:text-lg">
             HausMajstor

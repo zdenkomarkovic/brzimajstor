@@ -12,20 +12,37 @@ import {
   WORKING_HOURS,
 } from "@/lib/constants";
 
+function groupByMunicipality() {
+  const groups = new Map<string, typeof LOCATIONS>();
+  for (const location of LOCATIONS) {
+    const list = groups.get(location.municipality) ?? [];
+    list.push(location);
+    groups.set(location.municipality, list);
+  }
+  return Array.from(groups.entries());
+}
+
 export function Footer() {
   const year = new Date().getFullYear();
+  const locationGroups = groupByMunicipality();
 
   return (
     <footer className="bg-primary-dark text-white/80">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <Image src="/logo.png" alt={`${SITE_NAME} logo`} width={48} height={48} className="h-11 w-11" />
+            <Image
+              src="/logo.png"
+              alt={`${SITE_NAME} logo`}
+              width={200}
+              height={200}
+              className="h-32 w-32"
+            />
             <span className="font-heading text-lg font-bold text-white">HausMajstor</span>
           </div>
           <p className="mt-3 text-sm leading-relaxed">
-            Brzi majstor za hitne intervencije u Beogradu — vodovod, elektrika,
-            kanalizacija i grejanje. Dostupni 0-24, svakog dana.
+            Brzi majstor za hitne intervencije u Beogradu — vodovod, elektrika, kanalizacija i
+            grejanje. Dostupni 0-24, svakog dana.
           </p>
         </div>
 
@@ -60,19 +77,6 @@ export function Footer() {
               </Link>
             </li>
           </ul>
-
-          <h2 className="mt-6 font-heading text-sm font-semibold uppercase tracking-wide text-accent">
-            Lokacije
-          </h2>
-          <ul className="mt-3 space-y-2 text-sm">
-            {LOCATIONS.map((location) => (
-              <li key={location.slug}>
-                <Link href={`/${location.slug}`} className="transition hover:text-accent">
-                  {location.linkLabel}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div>
@@ -93,6 +97,30 @@ export function Footer() {
             <li>📍 {SERVICE_AREA}</li>
             <li>🕐 {WORKING_HOURS}</li>
           </ul>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl border-t border-white/10 px-4 py-10 sm:px-6">
+        <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-accent">
+          Lokacije koje pokrivamo
+        </h2>
+        <div className="mt-5 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-3 lg:grid-cols-4">
+          {locationGroups.map(([municipality, locations]) => (
+            <div key={municipality}>
+              <h3 className="text-xs font-bold uppercase tracking-wide text-white/50">
+                {municipality}
+              </h3>
+              <ul className="mt-2 space-y-1.5 text-sm">
+                {locations.map((location) => (
+                  <li key={location.slug}>
+                    <Link href={`/${location.slug}`} className="transition hover:text-accent">
+                      {location.linkLabel}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
 
