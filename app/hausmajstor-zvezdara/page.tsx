@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Zvezdara – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-zvezdara");
 const DESCRIPTION =
   "Hausmajstor Zvezdara – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja na jednom mestu. Izlazimo na adresu u svim delovima opštine, 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Zvezdara 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-zvezdara",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorZvezdaraPage() {
 
       <ServiceHero
         eyebrow="Zvezdara"
-        title={TITLE}
+        title={h1}
         intro="Zvezdara je opština gde se hitne majstorske intervencije traže gotovo svakodnevno – kombinacija starijih porodičnih kuća oko Mokrog Luga i Konjarnika i novogradnje duž Ustaničke ulice i Bulevara kralja Aleksandra znači da se susrećemo i sa dotrajalim instalacijama i sa modernim sistemima grejanja. Naš tim izlazi na teren u svim delovima opštine, od Đerma do same Zvezdarske šume."
         image="/hero.jpg"
         imageAlt="Majstor na intervenciji u porodičnoj kući na Zvezdari u Beogradu"
@@ -140,6 +142,8 @@ export default function HausmajstorZvezdaraPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Zvezdari" />
+
+      <NearbyLocations slug="hausmajstor-zvezdara" />
 
       <CTASection
         title="Hitan kvar na Zvezdari?"

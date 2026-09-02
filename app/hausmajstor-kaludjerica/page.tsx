@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Kaluđerica – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-kaludjerica");
 const DESCRIPTION =
   "Hausmajstor Kaluđerica – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za gusto izgrađeno naselje na periferiji Beograda. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Kaluđerica 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-kaludjerica",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorKaludjericaPage() {
 
       <ServiceHero
         eyebrow="Kaluđerica"
-        title={TITLE}
+        title={h1}
         intro="Kaluđerica je jedno od najgušće izgrađenih naselja u okolini Beograda, nastalo decenijskim širenjem individualne gradnje bez jedinstvenog urbanističkog plana. Uske uličice i kuće različite starosti i kvaliteta instalacija znače da svakoj adresi pristupamo pažljivo i bez unapred pretpostavljenog rešenja."
         image="/2149334231.jpg"
         imageAlt="Majstor radi u porodičnoj kući u Kaluđerici"
@@ -136,6 +138,8 @@ export default function HausmajstorKaludjericaPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama u Kaluđerici" />
+
+      <NearbyLocations slug="hausmajstor-kaludjerica" />
 
       <CTASection
         title="Hitan kvar u Kaluđerici?"

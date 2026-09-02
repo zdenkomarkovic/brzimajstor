@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Dorćol – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-dorcol");
 const DESCRIPTION =
   "Hausmajstor Dorćol – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stare i renovirane stanove u najstarijem delu Beograda. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Dorćol 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-dorcol",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorDorcolPage() {
 
       <ServiceHero
         eyebrow="Dorćol"
-        title={TITLE}
+        title={h1}
         intro="Dorćol je najstariji deo Beograda, sa zgradama iz devetnaestog i ranog dvadesetog veka duž ulica poput Cara Dušana i Dunavske, u neposrednoj blizini Kalemegdana. Veliki broj objekata je pod nekim vidom zaštite kao deo kulturnog nasleđa, pa intervencije često zahtevaju dodatnu pažnju da se ne naruši izgled fasade ili unutrašnjosti."
         image="/24857.jpg"
         imageAlt="Majstor radi u staroj zgradi na Dorćolu u Beogradu"
@@ -136,6 +138,8 @@ export default function HausmajstorDorcolPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Dorćolu" />
+
+      <NearbyLocations slug="hausmajstor-dorcol" />
 
       <CTASection
         title="Hitan kvar na Dorćolu?"

@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Vojvode Vlahovića – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-vojvode-vlahovica");
 const DESCRIPTION =
   "Hausmajstor Vojvode Vlahovića – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stanove i kuće blizu naselja Braće Jerković. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Vojvode Vlahovića 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-vojvode-vlahovica",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorVojvodeVlahovicaPage() {
 
       <ServiceHero
         eyebrow="Vojvode Vlahovića"
-        title={TITLE}
+        title={h1}
         intro="Naselje oko ulice Vojvode Vlahovića deo je Voždovca, u neposrednoj blizini Braće Jerković, sa mešavinom stambenih zgrada i porodičnih kuća. Izlazimo na adresu u sve delove ovog kraja, bez obzira na tip objekta."
         image="/hero.jpg"
         imageAlt="Majstor radi u zgradi u naselju Vojvode Vlahovića"
@@ -135,6 +137,8 @@ export default function HausmajstorVojvodeVlahovicaPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama u naselju Vojvode Vlahovića" />
+
+      <NearbyLocations slug="hausmajstor-vojvode-vlahovica" />
 
       <CTASection
         title="Hitan kvar u naselju Vojvode Vlahovića?"

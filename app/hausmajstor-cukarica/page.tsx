@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Čukarica – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-cukarica");
 const DESCRIPTION =
   "Hausmajstor Čukarica – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja od Požeške ulice do naselja bliže Adi Ciganliji. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Čukarica 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-cukarica",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorCukaricaPage() {
 
       <ServiceHero
         eyebrow="Čukarica"
-        title={TITLE}
+        title={h1}
         intro="Čukarica je velika opština sa dugom industrijskom istorijom, gde se stara radnička gradnja duž Požeške ulice i Čukaričke padine meša sa novijim stambenim naseljima bliže Adi Ciganliji. Zbog te raznovrsnosti, na terenu se susrećemo i sa vrlo starim instalacijama i sa savremenim sistemima u novogradnji."
         image="/2149176716.jpg"
         imageAlt="Majstor servisira kućni aparat u naselju na Čukarici"
@@ -136,6 +138,8 @@ export default function HausmajstorCukaricaPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Čukarici" />
+
+      <NearbyLocations slug="hausmajstor-cukarica" />
 
       <CTASection
         title="Hitan kvar na Čukarici?"

@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Dedinje – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-dedinje");
 const DESCRIPTION =
   "Majstor Dedinje – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za rezidencije i vile u blizini Košutnjaka i Topčiderskog parka. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Dedinje 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-dedinje",
 });
@@ -85,7 +87,7 @@ export default function MajstorDedinjePage() {
 
       <ServiceHero
         eyebrow="Dedinje"
-        title={TITLE}
+        title={h1}
         intro="Dedinje je jedno od najprestižnijih naselja u Beogradu, sa velikim vilama i rezidencijama u blizini Košutnjaka i Topčiderskog parka. Radovi ovde često podrazumevaju rad na kompleksnijim sistemima – više kupatila, bazeni, grejanje na više zona – uz visok nivo urednosti i poštovanje termina."
         image="/2149334231.jpg"
         imageAlt="Majstor radi na instalacijama u velikoj vili na Dedinju"
@@ -136,6 +138,8 @@ export default function MajstorDedinjePage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama na Dedinju" />
+
+      <NearbyLocations slug="majstor-dedinje" />
 
       <CTASection
         title="Hitan kvar na Dedinju?"

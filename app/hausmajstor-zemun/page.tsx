@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Zemun – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-zemun");
 const DESCRIPTION =
   "Hausmajstor Zemun – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja od starog jezgra oko Gardoša do Zemun polja i Altine. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Zemun 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-zemun",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorZemunPage() {
 
       <ServiceHero
         eyebrow="Zemun"
-        title={TITLE}
+        title={h1}
         intro="Zemun je nekada bio samostalan grad i to se i danas oseća – staro jezgro oko Gardoša i Glavne ulice čine niske zgrade iz austrougarskog perioda, dok se u Zemun polju, Altini i Kamendinu decenijama grade nova naselja porodičnih kuća i stambenih zgrada. Radimo podjednako u oba dela, od uskih uličica gornjeg grada do novogradnje bliže Novom Beogradu."
         image="/2150721537.jpg"
         imageAlt="Majstor popravlja vodovodnu instalaciju u kući u Zemunu"
@@ -136,6 +138,8 @@ export default function HausmajstorZemunPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama u Zemunu" />
+
+      <NearbyLocations slug="hausmajstor-zemun" />
 
       <CTASection
         title="Hitan kvar u Zemunu?"

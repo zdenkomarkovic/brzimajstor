@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Bogoslovija – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-bogoslovija");
 const DESCRIPTION =
   "Majstor Bogoslovija – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za porodične kuće oko Kanarevog sokaka na Vračaru. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Bogoslovija 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-bogoslovija",
 });
@@ -85,7 +87,7 @@ export default function MajstorBogoslovijaPage() {
 
       <ServiceHero
         eyebrow="Bogoslovija"
-        title={TITLE}
+        title={h1}
         intro="Bogoslovija je mirniji, brdoviti deo Vračara u okolini Kanarevog sokaka, sa porodičnim kućama i manjim stambenim zgradama. Kraj je gušće naseljen porodicama koje duže žive na istoj adresi, pa su nam poznate i starije instalacije koje su služile decenijama uz povremene delimične popravke."
         image="/2149176716.jpg"
         imageAlt="Majstor popravlja kućni aparat u kući u naselju Bogoslovija"
@@ -136,6 +138,8 @@ export default function MajstorBogoslovijaPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama u Bogosloviji" />
+
+      <NearbyLocations slug="majstor-bogoslovija" />
 
       <CTASection
         title="Hitan kvar u Bogosloviji?"

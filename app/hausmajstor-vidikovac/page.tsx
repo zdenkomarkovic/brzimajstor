@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Vidikovac – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-vidikovac");
 const DESCRIPTION =
   "Hausmajstor Vidikovac – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stambene blokove na uzvišenju iznad Kneza Višeslava. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Vidikovac 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-vidikovac",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorVidikovacPage() {
 
       <ServiceHero
         eyebrow="Vidikovac"
-        title={TITLE}
+        title={h1}
         intro="Vidikovac je naselje na granici Čukarice i Rakovice, podignuto na uzvišenju iznad Kneza Višeslava odakle je dobilo i ime. Stambeni blokovi iz sedamdesetih i osamdesetih godina danas su stari po nekoliko decenija, pa su zajedničke instalacije sve češće predmet naših intervencija."
         image="/2204.jpg"
         imageAlt="Električar radi u stambenom bloku na Vidikovcu u Beogradu"
@@ -137,6 +139,8 @@ export default function HausmajstorVidikovacPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Vidikovcu" />
+
+      <NearbyLocations slug="hausmajstor-vidikovac" />
 
       <CTASection
         title="Hitan kvar na Vidikovcu?"

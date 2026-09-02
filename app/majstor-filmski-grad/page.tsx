@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Filmski grad – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-filmski-grad");
 const DESCRIPTION =
   "Majstor Filmski grad – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za vile i kuće u zelenom delu Košutnjaka. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Filmski grad 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-filmski-grad",
 });
@@ -85,7 +87,7 @@ export default function MajstorFilmskiGradPage() {
 
       <ServiceHero
         eyebrow="Filmski grad"
-        title={TITLE}
+        title={h1}
         intro="Filmski grad je mirno, zeleno naselje na Košutnjaku, koje je ime dobilo po nekadašnjim filmskim ateljeima smeštenim u ovom delu grada. Vile i porodične kuće ovde su okružene šumom, a uže, mirnije ulice zahtevaju drugačiji pristup nego rad u gušće naseljenim delovima grada."
         image="/tapec.jpg"
         imageAlt="Majstor servisira grejanje u vili u Filmskom gradu na Košutnjaku"
@@ -135,6 +137,8 @@ export default function MajstorFilmskiGradPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama u Filmskom gradu" />
+
+      <NearbyLocations slug="majstor-filmski-grad" />
 
       <CTASection
         title="Hitan kvar u Filmskom gradu?"

@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Novi Beograd – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-novi-beograd");
 const DESCRIPTION =
   "Majstor Novi Beograd – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stanove, poslovne prostore i nove stambene komplekse. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Novi Beograd 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-novi-beograd",
 });
@@ -85,7 +87,7 @@ export default function MajstorNoviBeogradPage() {
 
       <ServiceHero
         eyebrow="Novi Beograd"
-        title={TITLE}
+        title={h1}
         intro="Novi Beograd je najveća opština u gradu, od starih blokova sa soliterima iz šezdesetih i sedamdesetih do novogradnje oko Ušća, Airport Sitija i Bloka 67/68. Radimo podjednako u stanovima na visokim spratovima starih blokova, poslovnim prostorima duž Bulevara Mihajla Pupina i u novim rezidencijalnim kompleksima."
         image="/tapec.jpg"
         imageAlt="Majstor servisira radijator u stanu na Novom Beogradu"
@@ -140,6 +142,8 @@ export default function MajstorNoviBeogradPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama na Novom Beogradu" />
+
+      <NearbyLocations slug="majstor-novi-beograd" />
 
       <CTASection
         title="Hitan kvar na Novom Beogradu?"

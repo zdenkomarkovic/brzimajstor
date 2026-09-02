@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Cerak – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-cerak");
 const DESCRIPTION =
   "Majstor Cerak – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stambene blokove Cerak Vinogradi i okolne kuće. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Cerak 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-cerak",
 });
@@ -85,7 +87,7 @@ export default function MajstorCerakPage() {
 
       <ServiceHero
         eyebrow="Cerak"
-        title={TITLE}
+        title={h1}
         intro="Cerak, sa naseljem Cerak Vinogradi, deo je opštine Rakovica izgrađen pretežno tokom osamdesetih godina, sa stambenim blokovima na brdovitom terenu blizu Miljakovca. Redovno izlazimo i u ove zgrade i u porodične kuće koje ih okružuju, gde su instalacije često znatno starije."
         image="/2149176716.jpg"
         imageAlt="Majstor servisira kućni aparat u stambenom bloku na Ceraku"
@@ -136,6 +138,8 @@ export default function MajstorCerakPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama na Ceraku" />
+
+      <NearbyLocations slug="majstor-cerak" />
 
       <CTASection
         title="Hitan kvar na Ceraku?"

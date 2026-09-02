@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Karaburma – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-karaburma");
 const DESCRIPTION =
   "Hausmajstor Karaburma – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stambene blokove i kuće na Karaburmi. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Karaburma 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-karaburma",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorKaraburmaPage() {
 
       <ServiceHero
         eyebrow="Karaburma"
-        title={TITLE}
+        title={h1}
         intro="Karaburma je deo Palilule uz samu obalu Dunava, poznata po stambenim blokovima iz sedamdesetih i osamdesetih godina duž Mije Kovačevića i Marijane Gregoran, ali i po porodičnim kućama prema Višnjičkoj banji i Kotežu. Redovno izlazimo i u stare zgrade sa zajedničkim instalacijama i u individualne kuće bliže Dunavu, gde se javljaju sasvim različiti tipovi kvarova."
         image="/2204.jpg"
         imageAlt="Električar radi na instalaciji u stambenoj zgradi na Karaburmi"
@@ -138,6 +140,8 @@ export default function HausmajstorKaraburmaPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Karaburmi" />
+
+      <NearbyLocations slug="hausmajstor-karaburma" />
 
       <CTASection
         title="Hitan kvar na Karaburmi?"

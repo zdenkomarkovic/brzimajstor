@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Žarkovo – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-zarkovo");
 const DESCRIPTION =
   "Hausmajstor Žarkovo – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za porodične kuće i novije zgrade duž Patrijarha Pavla. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Žarkovo 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-zarkovo",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorZarkovoPage() {
 
       <ServiceHero
         eyebrow="Žarkovo"
-        title={TITLE}
+        title={h1}
         intro="Žarkovo je naselje na Čukarici, između Banovog brda i Rakovice, sa mešavinom porodičnih kuća i novije stambene gradnje duž ulice Patrijarha Pavla. Kraj se decenijama širio kroz individualnu izgradnju, pa se na terenu susrećemo i sa vrlo starim i sa sasvim novim instalacijama, često u istoj kući."
         image="/2149334231.jpg"
         imageAlt="Majstor radi u porodičnoj kući na Žarkovu u Beogradu"
@@ -136,6 +138,8 @@ export default function HausmajstorZarkovoPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Žarkovu" />
+
+      <NearbyLocations slug="hausmajstor-zarkovo" />
 
       <CTASection
         title="Hitan kvar na Žarkovu?"

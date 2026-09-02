@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Mali Mokri Lug – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-mali-mokri-lug");
 const DESCRIPTION =
   "Majstor Mali Mokri Lug – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za porodične kuće u ovom delu Zvezdare. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Mali Mokri Lug 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-mali-mokri-lug",
 });
@@ -85,7 +87,7 @@ export default function MajstorMaliMokriLugPage() {
 
       <ServiceHero
         eyebrow="Mali Mokri Lug"
-        title={TITLE}
+        title={h1}
         intro="Mali Mokri Lug je mirno, pretežno porodično naselje na Zvezdari, sa individualnim kućama na brdovitom terenu. Kraj se decenijama širio kroz individualnu izgradnju, pa se na terenu često susrećemo sa instalacijama različite starosti, čak i u okviru iste kuće."
         image="/hero.jpg"
         imageAlt="Majstor radi u porodičnoj kući u Malom Mokrom Lugu"
@@ -135,6 +137,8 @@ export default function MajstorMaliMokriLugPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama u Malom Mokrom Lugu" />
+
+      <NearbyLocations slug="majstor-mali-mokri-lug" />
 
       <CTASection
         title="Hitan kvar u Malom Mokrom Lugu?"

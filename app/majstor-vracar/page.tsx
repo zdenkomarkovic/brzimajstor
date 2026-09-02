@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Vračar – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-vracar");
 const DESCRIPTION =
   "Majstor Vračar – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stare stambene zgrade oko Njegoševe i Kalenić pijace. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Vračar 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-vracar",
 });
@@ -85,7 +87,7 @@ export default function MajstorVracarPage() {
 
       <ServiceHero
         eyebrow="Vračar"
-        title={TITLE}
+        title={h1}
         intro="Vračar je najmanja, ali jedna od najgušće naseljenih opština u Beogradu, sa stambenim zgradama nastalim uglavnom u prvoj polovini i sredinom dvadesetog veka, oko Njegoševe ulice, Kalenić pijace i Hrama Svetog Save. Gusta gradnja i uzane ulice znače da svaka intervencija zahteva planiranje pristupa, na šta smo navikli."
         image="/2150721537.jpg"
         imageAlt="Majstor popravlja instalaciju u staroj zgradi na Vračaru"
@@ -139,6 +141,8 @@ export default function MajstorVracarPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama na Vračaru" />
+
+      <NearbyLocations slug="majstor-vracar" />
 
       <CTASection
         title="Hitan kvar na Vračaru?"

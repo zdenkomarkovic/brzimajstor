@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Bežanijska kosa – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-bezanijska-kosa");
 const DESCRIPTION =
   "Majstor Bežanijska kosa – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stambene blokove iz osamdesetih. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Bežanijska kosa 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-bezanijska-kosa",
 });
@@ -85,7 +87,7 @@ export default function MajstorBezanijskaKosaPage() {
 
       <ServiceHero
         eyebrow="Bežanijska kosa"
-        title={TITLE}
+        title={h1}
         intro="Bežanijska kosa je brdovito naselje na zapadnom delu Novog Beograda, izgrađeno pretežno tokom osamdesetih godina, sa visokim stambenim blokovima na samom uzvišenju odakle se pruža pogled na okolinu. Zgrade su sada stare četiri decenije, pa su zajedničke vodovodne i kanalizacione vertikale, kao i liftovi, sve češće predmet intervencija."
         image="/2204.jpg"
         imageAlt="Električar u stambenom bloku na Bežanijskoj kosi"
@@ -137,6 +139,8 @@ export default function MajstorBezanijskaKosaPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama na Bežanijskoj kosi" />
+
+      <NearbyLocations slug="majstor-bezanijska-kosa" />
 
       <CTASection
         title="Hitan kvar na Bežanijskoj kosi?"

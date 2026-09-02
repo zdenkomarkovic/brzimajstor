@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Palilula – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-palilula");
 const DESCRIPTION =
   "Hausmajstor Palilula – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja od centra opštine do Borče, Krnjače i Ovče. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Palilula 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-palilula",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorPalilulaPage() {
 
       <ServiceHero
         eyebrow="Palilula"
-        title={TITLE}
+        title={h1}
         intro="Palilula je jedna od najvećih i najraznovrsnijih opština u Beogradu – od stare gradnje oko Bulevara despota Stefana i Cvetkove pijace, preko stambenih naselja bliže centru, do Krnjače, Borče i Ovče na drugoj obali Dunava, gde se decenijama grade nove porodične kuće. Naš tim izlazi na adresu u svim ovim delovima, bez obzira da li je reč o staroj zgradi u centru ili novoj kući u Borči."
         image="/hero.jpg"
         imageAlt="Majstor na intervenciji u naselju na Paliluli u Beogradu"
@@ -139,6 +141,8 @@ export default function HausmajstorPalilulaPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Paliluli" />
+
+      <NearbyLocations slug="hausmajstor-palilula" />
 
       <CTASection
         title="Hitan kvar na Paliluli?"

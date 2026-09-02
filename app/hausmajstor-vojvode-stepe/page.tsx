@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Vojvode Stepe – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-vojvode-stepe");
 const DESCRIPTION =
   "Hausmajstor Vojvode Stepe – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stanove, lokale i kancelarije duž ove prometne ulice. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Vojvode Stepe 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-vojvode-stepe",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorVojvodeStepePage() {
 
       <ServiceHero
         eyebrow="Vojvode Stepe"
-        title={TITLE}
+        title={h1}
         intro="Ulica Vojvode Stepe jedna je od glavnih saobraćajnica Voždovca, sa tramvajskom linijom i mešavinom poslovnih prostora i stambenih zgrada duž trase. Intervencije ovde često izvodimo brzo, svesni da kvar na vodi ili struji u poslovnom prostoru direktno utiče na rad biznisa."
         image="/tapec.jpg"
         imageAlt="Majstor radi u zgradi duž ulice Vojvode Stepe"
@@ -134,6 +136,8 @@ export default function HausmajstorVojvodeStepePage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Vojvode Stepe" />
+
+      <NearbyLocations slug="hausmajstor-vojvode-stepe" />
 
       <CTASection
         title="Hitan kvar na Vojvode Stepe?"

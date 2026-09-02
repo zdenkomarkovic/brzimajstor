@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Kanarevo brdo – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-kanarevo-brdo");
 const DESCRIPTION =
   "Hausmajstor Kanarevo brdo – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za porodične kuće uz Rakovički lug. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Kanarevo brdo 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-kanarevo-brdo",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorKanarevoBrdoPage() {
 
       <ServiceHero
         eyebrow="Kanarevo brdo"
-        title={TITLE}
+        title={h1}
         intro="Kanarevo brdo je mirno, pretežno porodično naselje u okviru Rakovice, na brdovitom terenu blizu Rakovičkog luga. Kuće su građene postepeno tokom decenija, pa se na terenu često susrećemo sa instalacijama različite starosti, čak i u okviru iste kuće."
         image="/2149176716.jpg"
         imageAlt="Majstor radi u porodičnoj kući na Kanarevom brdu"
@@ -135,6 +137,8 @@ export default function HausmajstorKanarevoBrdoPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Kanarevom brdu" />
+
+      <NearbyLocations slug="hausmajstor-kanarevo-brdo" />
 
       <CTASection
         title="Hitan kvar na Kanarevom brdu?"

@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Vukov spomenik – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-vukov-spomenik");
 const DESCRIPTION =
   "Hausmajstor Vukov spomenik – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stanove i poslovne prostore oko raskrsnice. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Vukov spomenik 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-vukov-spomenik",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorVukovSpomenikPage() {
 
       <ServiceHero
         eyebrow="Vukov spomenik"
-        title={TITLE}
+        title={h1}
         intro="Vukov spomenik je jedno od najprometnijih raskršća Beograda, na granici Zvezdare, Palilule i Vračara, okruženo stambenim zgradama iz perioda između dva svetska rata i kasnijim naseljima duž Bulevara kralja Aleksandra i Cvijićeve ulice. Zbog gustog saobraćaja i frekventnosti kraja, trudimo se da hitne intervencije ovde rešavamo posebno brzo."
         image="/2204.jpg"
         imageAlt="Električar radi u zgradi kod Vukovog spomenika u Beogradu"
@@ -137,6 +139,8 @@ export default function HausmajstorVukovSpomenikPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama kod Vukovog spomenika" />
+
+      <NearbyLocations slug="hausmajstor-vukov-spomenik" />
 
       <CTASection
         title="Hitan kvar kod Vukovog spomenika?"

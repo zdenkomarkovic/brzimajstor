@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Slavujev venac – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-slavujev-venac");
 const DESCRIPTION =
   "Majstor Slavujev venac – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za vile i porodične kuće na granici Vračara i Zvezdare. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Slavujev venac 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-slavujev-venac",
 });
@@ -85,7 +87,7 @@ export default function MajstorSlavujevVenacPage() {
 
       <ServiceHero
         eyebrow="Slavujev venac"
-        title={TITLE}
+        title={h1}
         intro="Slavujev venac je mirno, brdovito naselje sa vilama i porodičnim kućama iz perioda između dva svetska rata, smešteno između Vračara i Zvezdare. Ovde često radimo na starijim, reprezentativnim objektima gde je pored funkcionalnosti bitno i da instalacije ostanu uredne i diskretne."
         image="/tapec.jpg"
         imageAlt="Majstor servisira grejanje u vili na Slavujevom vencu"
@@ -137,6 +139,8 @@ export default function MajstorSlavujevVenacPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama na Slavujevom vencu" />
+
+      <NearbyLocations slug="majstor-slavujev-venac" />
 
       <CTASection
         title="Hitan kvar na Slavujevom vencu?"

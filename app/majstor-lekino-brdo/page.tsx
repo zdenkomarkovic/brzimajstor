@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Lekino brdo – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-lekino-brdo");
 const DESCRIPTION =
   "Majstor Lekino brdo – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za kuće i niže stambene zgrade u ovom mirnom naselju. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Lekino brdo 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-lekino-brdo",
 });
@@ -85,7 +87,7 @@ export default function MajstorLekinoBrdoPage() {
 
       <ServiceHero
         eyebrow="Lekino brdo"
-        title={TITLE}
+        title={h1}
         intro="Lekino brdo je mirno naselje na Voždovcu, sa mešavinom porodičnih kuća i nižih stambenih zgrada. Kraj se decenijama razvijao postepeno, pa se na terenu često susrećemo sa instalacijama različite starosti, u zavisnosti od tipa objekta i godine gradnje."
         image="/2149334231.jpg"
         imageAlt="Majstor radi na odgušenju u naselju Lekino brdo"
@@ -135,6 +137,8 @@ export default function MajstorLekinoBrdoPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama na Lekinom brdu" />
+
+      <NearbyLocations slug="majstor-lekino-brdo" />
 
       <CTASection
         title="Hitan kvar na Lekinom brdu?"

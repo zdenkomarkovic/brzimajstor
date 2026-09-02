@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Savski venac – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-savski-venac");
 const DESCRIPTION =
   "Majstor Savski venac – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja od Slavije do Topčidera i Savskog keja. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Savski venac 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-savski-venac",
 });
@@ -85,7 +87,7 @@ export default function MajstorSavskiVenacPage() {
 
       <ServiceHero
         eyebrow="Savski venac"
-        title={TITLE}
+        title={h1}
         intro="Savski venac obuhvata vrlo različite celine – od gradske vreve oko Slavije i Bulevara oslobođenja, preko mirnog Topčiderskog parka i okoline Vojnomedicinske akademije, do novih poslovnih i stambenih objekata prema Savskom keju. Ta raznovrsnost znači da radimo i u starim zgradama u centru i u savremenim kompleksima uz reku."
         image="/24857.jpg"
         imageAlt="Majstor radi u zgradi u blizini Slavije na Savskom vencu"
@@ -137,6 +139,8 @@ export default function MajstorSavskiVenacPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama na Savskom vencu" />
+
+      <NearbyLocations slug="majstor-savski-venac" />
 
       <CTASection
         title="Hitan kvar na Savskom vencu?"

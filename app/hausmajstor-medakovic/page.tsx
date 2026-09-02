@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Medaković – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-medakovic");
 const DESCRIPTION =
   "Hausmajstor Medaković – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za naselja Medaković I, II, III i IV na Voždovcu. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Medaković 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-medakovic",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorMedakovicPage() {
 
       <ServiceHero
         eyebrow="Medaković"
-        title={TITLE}
+        title={h1}
         intro="Medaković, podeljen na četiri celine, mirno je i pretežno porodično naselje na Voždovcu, sa nižim stambenim zgradama i individualnim kućama. Izlazimo na adresu u sve delove naselja, bez obzira na to o kojoj celini je reč."
         image="/2149176716.jpg"
         imageAlt="Majstor servisira kućni aparat u naselju Medaković"
@@ -136,6 +138,8 @@ export default function HausmajstorMedakovicPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama u Medakoviću" />
+
+      <NearbyLocations slug="hausmajstor-medakovic" />
 
       <CTASection
         title="Hitan kvar u Medakoviću?"

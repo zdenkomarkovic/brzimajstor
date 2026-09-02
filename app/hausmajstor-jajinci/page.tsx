@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Jajinci – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-jajinci");
 const DESCRIPTION =
   "Hausmajstor Jajinci – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za porodične kuće u ovom mirnom predgrađu Voždovca. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Jajinci 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-jajinci",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorJajinciPage() {
 
       <ServiceHero
         eyebrow="Jajinci"
-        title={TITLE}
+        title={h1}
         intro="Jajinci su mirno, pretežno stambeno naselje na Voždovcu, poznato po istoimenom memorijalnom kompleksu, sa individualnim kućama koje se protežu prema Avalskom putu. Izlazimo na adresu u svim delovima naselja, bez obzira na udaljenost od centra opštine."
         image="/2149334231.jpg"
         imageAlt="Majstor radi u porodičnoj kući u Jajincima"
@@ -136,6 +138,8 @@ export default function HausmajstorJajinciPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama u Jajincima" />
+
+      <NearbyLocations slug="hausmajstor-jajinci" />
 
       <CTASection
         title="Hitan kvar u Jajincima?"

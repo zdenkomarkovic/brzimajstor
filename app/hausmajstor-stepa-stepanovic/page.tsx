@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Stepa Stepanović – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-stepa-stepanovic");
 const DESCRIPTION =
   "Hausmajstor Stepa Stepanović – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stambene blokove i kuće blizu Šumica. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Stepa Stepanović 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-stepa-stepanovic",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorStepaStepanovicPage() {
 
       <ServiceHero
         eyebrow="Stepa Stepanović"
-        title={TITLE}
+        title={h1}
         intro="Naselje Stepa Stepanović deo je Voždovca sa stambenim blokovima blizu Šumica i Kumodraža, izgrađenim tokom sedamdesetih i osamdesetih godina. Izlazimo na adresu i u ove zgrade i u porodične kuće koje ih okružuju, gde su instalacije često različite starosti."
         image="/2204.jpg"
         imageAlt="Električar radi u stambenom bloku u naselju Stepa Stepanović"
@@ -135,6 +137,8 @@ export default function HausmajstorStepaStepanovicPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama u naselju Stepa Stepanović" />
+
+      <NearbyLocations slug="hausmajstor-stepa-stepanovic" />
 
       <CTASection
         title="Hitan kvar u naselju Stepa Stepanović?"

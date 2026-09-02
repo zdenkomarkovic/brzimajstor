@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Stari grad – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-stari-grad");
 const DESCRIPTION =
   "Majstor Stari grad – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stanove, lokale i kancelarije od Knez Mihailove do Skadarlije. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Stari grad 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-stari-grad",
 });
@@ -85,7 +87,7 @@ export default function MajstorStariGradPage() {
 
       <ServiceHero
         eyebrow="Stari grad"
-        title={TITLE}
+        title={h1}
         intro="Stari grad je administrativni i turistički centar Beograda, od pešačke zone Knez Mihailove do Skadarlije, sa mešavinom poslovnih prostora – kafana, radnji, kancelarija – i stambenih zgrada iznad njih. Intervencije ovde često radimo u ranim jutarnjim satima ili van radnog vremena lokala, kako bismo što manje remetili poslovanje."
         image="/hero.jpg"
         imageAlt="Majstor radi u lokalu u centru Beograda, Stari grad"
@@ -136,6 +138,8 @@ export default function MajstorStariGradPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama na Starom gradu" />
+
+      <NearbyLocations slug="majstor-stari-grad" />
 
       <CTASection
         title="Hitan kvar na Starom gradu?"

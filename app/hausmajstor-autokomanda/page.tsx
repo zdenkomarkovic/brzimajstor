@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Autokomanda – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-autokomanda");
 const DESCRIPTION =
   "Hausmajstor Autokomanda – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stanove i poslovne prostore na ovom saobraćajnom čvoru. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Autokomanda 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-autokomanda",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorAutokomandaPage() {
 
       <ServiceHero
         eyebrow="Autokomanda"
-        title={TITLE}
+        title={h1}
         intro="Autokomanda je jedan od najprometnijih saobraćajnih čvorova u Beogradu, sa mešavinom poslovnih objekata i stambenih zgrada u okolini raskrsnice. Zbog gustog saobraćaja i tekućih radova na infrastrukturi, dolazak na adresu ovde uvek pažljivo planiramo."
         image="/2204.jpg"
         imageAlt="Električar radi u zgradi u blizini Autokomande u Beogradu"
@@ -136,6 +138,8 @@ export default function HausmajstorAutokomandaPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Autokomandi" />
+
+      <NearbyLocations slug="hausmajstor-autokomanda" />
 
       <CTASection
         title="Hitan kvar na Autokomandi?"

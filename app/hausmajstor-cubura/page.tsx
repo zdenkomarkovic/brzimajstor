@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Čubura – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-cubura");
 const DESCRIPTION =
   "Hausmajstor Čubura – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za stare kuće i niže zgrade u ovoj beogradskoj mahali. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Čubura 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-cubura",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorCuburaPage() {
 
       <ServiceHero
         eyebrow="Čubura"
-        title={TITLE}
+        title={h1}
         intro="Čubura je jedna od najstarijih beogradskih mahala, poznata po niskim, prizemnim kućama i uskim strmim uličicama koje se spuštaju ka Vračaru. Rad na ovako starim objektima zahteva iskustvo sa instalacijama koje su često menjane parcijalno tokom decenija, pa retko postoji jedinstven, dosledan sistem kroz celu kuću."
         image="/2149334231.jpg"
         imageAlt="Majstor radi na odgušenju u staroj kući na Čuburi"
@@ -136,6 +138,8 @@ export default function HausmajstorCuburaPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Čuburi" />
+
+      <NearbyLocations slug="hausmajstor-cubura" />
 
       <CTASection
         title="Hitan kvar na Čuburi?"

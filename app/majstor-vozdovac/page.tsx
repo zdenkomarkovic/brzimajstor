@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Voždovac – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-vozdovac");
 const DESCRIPTION =
   "Majstor Voždovac – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za centralni deo opštine, od starog seoskog jezgra do novije gradnje. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Voždovac 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-vozdovac",
 });
@@ -85,7 +87,7 @@ export default function MajstorVozdovacPage() {
 
       <ServiceHero
         eyebrow="Voždovac"
-        title={TITLE}
+        title={h1}
         intro="Centralni deo opštine Voždovac čuva tragove svog seoskog porekla kroz starije kuće, dok se u okolini razvijaju noviji stambeni objekti i naselja poput Autokomande i Medakovića. Naš tim izlazi na adresu u svim delovima opštine, bez obzira na tip i starost objekta."
         image="/hero.jpg"
         imageAlt="Majstor radi u kući na Voždovcu u Beogradu"
@@ -136,6 +138,8 @@ export default function MajstorVozdovacPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama na Voždovcu" />
+
+      <NearbyLocations slug="majstor-vozdovac" />
 
       <CTASection
         title="Hitan kvar na Voždovcu?"

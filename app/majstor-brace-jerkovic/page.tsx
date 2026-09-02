@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Braće Jerković – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-brace-jerkovic");
 const DESCRIPTION =
   "Majstor Braće Jerković – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za veliko stambeno naselje na Voždovcu. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Braće Jerković 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-brace-jerkovic",
 });
@@ -85,7 +87,7 @@ export default function MajstorBraceJerkovicPage() {
 
       <ServiceHero
         eyebrow="Braće Jerković"
-        title={TITLE}
+        title={h1}
         intro="Braće Jerković je jedno od najvećih stambenih naselja na Voždovcu, izgrađeno pretežno tokom sedamdesetih i osamdesetih godina, sa gusto raspoređenim zgradama. Zbog gustine naseljenosti i starosti objekata, zajedničke instalacije su ovde česta tema naših intervencija."
         image="/2204.jpg"
         imageAlt="Električar radi u stambenoj zgradi u naselju Braće Jerković"
@@ -136,6 +138,8 @@ export default function MajstorBraceJerkovicPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama u naselju Braće Jerković" />
+
+      <NearbyLocations slug="majstor-brace-jerkovic" />
 
       <CTASection
         title="Hitan kvar u naselju Braće Jerković?"

@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Rakovica – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-rakovica");
 const DESCRIPTION =
   "Hausmajstor Rakovica – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja od stare radničke gradnje do novijih naselja opštine. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Rakovica 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-rakovica",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorRakovicaPage() {
 
       <ServiceHero
         eyebrow="Rakovica"
-        title={TITLE}
+        title={h1}
         intro="Rakovica je opština sa dugom industrijskom istorijom, gde se stara radnička gradnja duž ulice Patrijarha Dimitrija meša sa novijim stambenim naseljima bliže Rakovičkom lugu. Naš tim izlazi na adresu u svim delovima opštine, bez obzira da li je reč o staroj zgradi iz doba fabrika ili novogradnji poslednjih godina."
         image="/24857.jpg"
         imageAlt="Majstor radi u naselju u Rakovici u Beogradu"
@@ -136,6 +138,8 @@ export default function HausmajstorRakovicaPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama u Rakovici" />
+
+      <NearbyLocations slug="hausmajstor-rakovica" />
 
       <CTASection
         title="Hitan kvar u Rakovici?"

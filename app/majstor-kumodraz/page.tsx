@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Kumodraž – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-kumodraz");
 const DESCRIPTION =
   "Majstor Kumodraž – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za Kumodraž I i II, na putu ka Avali. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Kumodraž 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-kumodraz",
 });
@@ -85,7 +87,7 @@ export default function MajstorKumodrazPage() {
 
       <ServiceHero
         eyebrow="Kumodraž"
-        title={TITLE}
+        title={h1}
         intro="Kumodraž, podeljen na Kumodraž I i II, mirno je naselje porodičnih kuća na brdovitom terenu Voždovca, na putu prema Avali. Uske i strme ulice zahtevaju opremu prilagođenu terenu koji nije uvek lako pristupačan, a mi na to računamo pri svakoj intervenciji."
         image="/2150721537.jpg"
         imageAlt="Majstor popravlja instalaciju u kući u Kumodražu"
@@ -136,6 +138,8 @@ export default function MajstorKumodrazPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama u Kumodražu" />
+
+      <NearbyLocations slug="majstor-kumodraz" />
 
       <CTASection
         title="Hitan kvar u Kumodražu?"

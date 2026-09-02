@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Banovo brdo – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-banovo-brdo");
 const DESCRIPTION =
   "Hausmajstor Banovo brdo – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za porodične kuće duž Kneza Višeslava, blizu Ade Ciganlije. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Banovo brdo 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-banovo-brdo",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorBanovoBrdoPage() {
 
       <ServiceHero
         eyebrow="Banovo brdo"
-        title={TITLE}
+        title={h1}
         intro="Banovo brdo je mirno, pretežno porodično naselje u okviru Čukarice, sa individualnim kućama i nižim stambenim zgradama duž Kneza Višeslava, nadomak Ade Ciganlije. Kraj je izgrađivan postepeno tokom decenija, pa se na terenu često susrećemo sa kombinacijom starijih i naknadno renoviranih instalacija u istoj kući."
         image="/hero.jpg"
         imageAlt="Majstor radi u porodičnoj kući na Banovom brdu u Beogradu"
@@ -136,6 +138,8 @@ export default function HausmajstorBanovoBrdoPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Banovom brdu" />
+
+      <NearbyLocations slug="hausmajstor-banovo-brdo" />
 
       <CTASection
         title="Hitan kvar na Banovom brdu?"

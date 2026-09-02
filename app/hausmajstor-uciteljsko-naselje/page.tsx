@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Učiteljsko naselje – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-uciteljsko-naselje");
 const DESCRIPTION =
   "Hausmajstor Učiteljsko naselje – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za porodične kuće u ovom mirnom delu grada. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Učiteljsko naselje 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-uciteljsko-naselje",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorUciteljskoNaseljePage() {
 
       <ServiceHero
         eyebrow="Učiteljsko naselje"
-        title={TITLE}
+        title={h1}
         intro="Učiteljsko naselje je mirno, pretežno porodično naselje sa individualnim kućama, nastalo kao stambena zona namenjena porodicama koje su ovde dobijale parcele za gradnju. Izlazimo na adresu u svim delovima naselja, bez obzira na udaljenost od centra grada."
         image="/24857.jpg"
         imageAlt="Majstor radi u porodičnoj kući u Učiteljskom naselju"
@@ -136,6 +138,8 @@ export default function HausmajstorUciteljskoNaseljePage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama u Učiteljskom naselju" />
+
+      <NearbyLocations slug="hausmajstor-uciteljsko-naselje" />
 
       <CTASection
         title="Hitan kvar u Učiteljskom naselju?"

@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Hausmajstor Senjak – majstor za hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("hausmajstor-senjak");
 const DESCRIPTION =
   "Hausmajstor Senjak – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za vile i porodične kuće u ovom mirnom naselju. Dostupni 0-24, svakog dana.";
 
 export const metadata = buildMetadata({
-  title: "Hausmajstor Senjak 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/hausmajstor-senjak",
 });
@@ -85,7 +87,7 @@ export default function HausmajstorSenjakPage() {
 
       <ServiceHero
         eyebrow="Senjak"
-        title={TITLE}
+        title={h1}
         intro="Senjak je jedno od najmirnijih vilinskih naselja u samom centru Beograda, sa kućama i vilama iz perioda između dva svetska rata, okruženim zelenilom i velikim dvorištima. Objekti ovog tipa često imaju kombinaciju originalnih instalacija i naknadno dograđenih sistema, pa je pre svake intervencije važno dobro proceniti stanje na terenu."
         image="/tapec.jpg"
         imageAlt="Majstor servisira grejanje u vili na Senjaku u Beogradu"
@@ -136,6 +138,8 @@ export default function HausmajstorSenjakPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o hausmajstor uslugama na Senjaku" />
+
+      <NearbyLocations slug="hausmajstor-senjak" />
 
       <CTASection
         title="Hitan kvar na Senjaku?"

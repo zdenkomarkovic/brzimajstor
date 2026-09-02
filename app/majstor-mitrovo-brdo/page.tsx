@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
+import { getLocationSeo } from "@/lib/locationSeo";
 import { buildServiceJsonLd, buildBreadcrumbJsonLd } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ServiceHero } from "@/components/sections/ServiceHero";
 import { FAQ } from "@/components/sections/FAQ";
+import { NearbyLocations } from "@/components/sections/NearbyLocations";
 import { CTASection } from "@/components/sections/CTASection";
 
-const TITLE = "Majstor Mitrovo brdo – hitne intervencije 0-24";
+const { metaTitle, h1 } = getLocationSeo("majstor-mitrovo-brdo");
 const DESCRIPTION =
   "Majstor Mitrovo brdo – vodoinstalater, električar, odgušenje kanalizacije i servis grejanja za porodične kuće u ovom mirnom naselju na Voždovcu. Dostupni 0-24.";
 
 export const metadata = buildMetadata({
-  title: "Majstor Mitrovo brdo 0-24",
+  title: metaTitle,
   description: DESCRIPTION,
   url: "/majstor-mitrovo-brdo",
 });
@@ -85,7 +87,7 @@ export default function MajstorMitrovoBrdoPage() {
 
       <ServiceHero
         eyebrow="Mitrovo brdo"
-        title={TITLE}
+        title={h1}
         intro="Mitrovo brdo je mirno, pretežno porodično naselje na Voždovcu, sa individualnim kućama na brdovitom terenu. Kraj se decenijama širio kroz individualnu izgradnju, pa se na terenu često susrećemo sa instalacijama različite starosti, čak i u okviru iste kuće."
         image="/24857.jpg"
         imageAlt="Majstor radi u porodičnoj kući na Mitrovom brdu"
@@ -135,6 +137,8 @@ export default function MajstorMitrovoBrdoPage() {
       </section>
 
       <FAQ items={FAQ_ITEMS} title="Pitanja o majstorskim uslugama na Mitrovom brdu" />
+
+      <NearbyLocations slug="majstor-mitrovo-brdo" />
 
       <CTASection
         title="Hitan kvar na Mitrovom brdu?"
