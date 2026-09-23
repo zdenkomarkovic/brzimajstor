@@ -177,6 +177,19 @@ export default function RootLayout({
             gtag('config', 'G-ECBFRVLM60');
           `}
         </Script>
+        <Script id="ga-phone-click-tracking" strategy="afterInteractive">
+          {`
+            document.addEventListener('click', function (e) {
+              var link = e.target.closest('a[href^="tel:"]');
+              if (!link) return;
+              gtag('event', 'phone_click', {
+                phone_number: link.getAttribute('href').replace('tel:', ''),
+                link_text: (link.textContent || '').trim(),
+                page_path: window.location.pathname,
+              });
+            });
+          `}
+        </Script>
         <JsonLd data={websiteJsonLd} />
         <JsonLd data={localBusinessJsonLd} />
         <Header />
