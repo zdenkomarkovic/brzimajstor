@@ -177,16 +177,30 @@ export default function RootLayout({
             gtag('config', 'G-ECBFRVLM60');
           `}
         </Script>
-        <Script id="ga-phone-click-tracking" strategy="afterInteractive">
+        <Script id="ga-contact-click-tracking" strategy="afterInteractive">
           {`
             document.addEventListener('click', function (e) {
-              var link = e.target.closest('a[href^="tel:"]');
+              var link = e.target.closest('a[href]');
               if (!link) return;
-              gtag('event', 'phone_click', {
-                phone_number: link.getAttribute('href').replace('tel:', ''),
+              var href = link.getAttribute('href');
+              var eventName = null;
+              var eventParams = {
                 link_text: (link.textContent || '').trim(),
                 page_path: window.location.pathname,
-              });
+              };
+
+              if (href.indexOf('tel:') === 0) {
+                eventName = 'phone_click';
+                eventParams.phone_number = href.replace('tel:', '');
+              } else if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp') !== -1) {
+                eventName = 'whatsapp_click';
+              } else if (href.indexOf('viber://') === 0) {
+                eventName = 'viber_click';
+              }
+
+              if (eventName) {
+                gtag('event', eventName, eventParams);
+              }
             });
           `}
         </Script>
