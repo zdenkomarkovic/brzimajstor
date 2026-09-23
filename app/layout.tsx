@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -164,6 +165,18 @@ export default function RootLayout({
   return (
     <html lang="sr-RS" className={`${inter.variable} ${poppins.variable}`}>
       <body className="flex min-h-screen flex-col bg-white font-sans text-ink pb-16 lg:pb-0">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ECBFRVLM60"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ECBFRVLM60');
+          `}
+        </Script>
         <JsonLd data={websiteJsonLd} />
         <JsonLd data={localBusinessJsonLd} />
         <Header />
